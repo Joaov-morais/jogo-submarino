@@ -1,0 +1,125 @@
+/* Reset Básico e Estilos Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #001219;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+canvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Garante que o canvas fique no fundo */
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- MENU INICIAL ATUALIZADO --- */
+#start-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ocupa a largura toda da tela */
+    height: 100vh; /* Ocupa a altura toda da tela */
+    z-index: 10;
+    
+    /* Nova imagem de fundo */
+    background-image: url('assets/Logo.png');
+    background-size: cover; /* Garante que a imagem cubra todo o espaço */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat;
+    
+    /* Centraliza o botão de iniciar */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Alinha o botão na parte de baixo */
+    padding-bottom: 15%; /* Espaçamento para o botão não ficar colado na borda */
+}
+
+/* Esconde o título h1 antigo, pois o novo logo já tem o nome */
+#start-menu h1 {
+    display: none;
+}
+
+#start-btn {
+    font-size: 1.8em;
+    padding: 20px 50px;
+    cursor: pointer;
+    border: 3px solid white;
+    border-radius: 15px;
+    color: white;
+    background: linear-gradient(45deg, #2a9d8f, #2ecc71);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+    text-shadow: 2px 2px 4px #000;
+}
+
+#start-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Estilos para a mensagem de objetivo */
+#level-objective {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    z-index: 20;
+    color: white;
+    border: 2px solid #2a9d8f;
+}
+
+#level-objective h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+#level-objective p {
+    font-size: 1.2em;
+}
+
+/* Controlos de Toque */
+#touch-controls {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+}
+
+.movement-group {
+    display: flex;
+    gap: 20px;
+}
+
+#touch-controls button {
+    width: 80px;
+    height: 80px;
+    font-size: 2.5em;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 0.25);
+    color: white;
+    -webkit-tap-highlight-color: transparent;
+}

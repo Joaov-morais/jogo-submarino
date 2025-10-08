@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Eco Raiders</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/submarino2d.png">
+    <link rel="apple-touch-icon" href="assets/submarino2d.png">
+</head>
+<body>
+    <div id="start-menu">
+        <h1>Eco Raiders</h1>
+        <button id="start-btn">Iniciar Jogo</button>
+    </div>
+
+    <div id="level-objective" class="hidden">
+        <h2 id="level-title"></h2>
+        <p id="objective-text"></p>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <div id="touch-controls" class="hidden">
+        <div class="movement-group">
+            <button id="left-btn">◀</button>
+            <button id="right-btn">▶</button>
+        </div>
+        <button id="shoot-btn">💥</button>
+    </div>
+    
+    <audio id="background-music" loop src="audio/musica.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
