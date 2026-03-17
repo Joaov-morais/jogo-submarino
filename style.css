@@ -1,94 +1,104 @@
 /* Reset Básico e Estilos Gerais */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; /* Remove margens externas de todos os elementos */
+    padding: 0; /* Remove preenchimento interno de todos os elementos */
+    box-sizing: border-box; /* Faz com que 'padding' e 'border' não aumentem o tamanho total do elemento */
 }
 
 body {
-    background-color: #001219;
-    color: white;
-    font-family: 'Arial', sans-serif;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: #001219; /* Cor de fundo escura */
+    color: white; /* Cor do texto padrão */
+    font-family: 'Arial', sans-serif; /* Fonte padrão */
+    overflow: hidden; /* Impede que barras de rolagem apareçam */
+    display: flex; /* Habilita o layout flexbox */
+    justify-content: center; /* Centraliza conteúdo horizontalmente */
+    align-items: center; /* Centraliza conteúdo verticalmente */
+    height: 100vh; /* Altura total da tela */
 }
 
 canvas {
-    display: block;
-    position: absolute;
+    display: block; /* Remove espaço extra abaixo do canvas */
+    position: absolute; /* Posição absoluta para cobrir a tela */
     top: 0;
     left: 0;
-    z-index: 1; /* Garante que o canvas fique no fundo */
+    z-index: 1; /* Coloca o canvas atrás dos menus (que têm z-index maior) */
 }
 
+/* Classe utilitária para esconder elementos */
 .hidden {
-    display: none !important;
+    display: none !important; /* 'display: none' remove o elemento; '!important' força a regra */
 }
 
-/* --- MENU INICIAL ATUALIZADO --- */
+/* --- MENU INICIAL --- */
 #start-menu {
-    position: absolute;
+    position: absolute; /* Posição absoluta para cobrir a tela */
     top: 0;
     left: 0;
-    width: 100vw; /* Ocupa a largura toda da tela */
-    height: 100vh; /* Ocupa a altura toda da tela */
-    z-index: 10;
-    
-    /* Nova imagem de fundo */
-    background-image: url('assets/Logo.png');
-    background-size: cover; /* Garante que a imagem cubra todo o espaço */
+    width: 100vw; /* 100% da largura da tela */
+    height: 100vh; /* 100% da altura da tela */
+    z-index: 10; /* Fica na frente do canvas (z-index: 1) */
+    background-image: url('assets/logo_menor.png'); /* Imagem de fundo do menu */
+    background-size: cover; /* Faz a imagem cobrir todo o espaço */
     background-position: center; /* Centraliza a imagem */
-    background-repeat: no-repeat;
-    
-    /* Centraliza o botão de iniciar */
-    display: flex;
-    justify-content: center;
+    background-repeat: no-repeat; /* Impede que a imagem se repita */
+    display: flex; /* Habilita flexbox para alinhar o botão */
+    justify-content: center; /* Centraliza o botão horizontalmente */
     align-items: flex-end; /* Alinha o botão na parte de baixo */
-    padding-bottom: 15%; /* Espaçamento para o botão não ficar colado na borda */
+    padding-bottom: 25%; /* Dá um espaço entre o botão e a borda inferior */
 }
 
-/* Esconde o título h1 antigo, pois o novo logo já tem o nome */
 #start-menu h1 {
-    display: none;
+    display: none; /* Esconde o título "Eco Raiders" (provavelmente já está no logo) */
 }
 
+/* --- NOVO ESTILO DO BOTÃO START --- */
 #start-btn {
-    font-size: 1.8em;
-    padding: 20px 50px;
-    cursor: pointer;
-    border: 3px solid white;
-    border-radius: 15px;
-    color: white;
-    background: linear-gradient(45deg, #2a9d8f, #2ecc71);
-    box-shadow: 0 6px 8px rgba(0,0,0,0.3);
-    transition: transform 0.2s;
-    text-shadow: 2px 2px 4px #000;
+  padding: 1.3em 3em; /* Preenchimento interno */
+  font-size: 12px; /* Tamanho da fonte */
+  text-transform: uppercase; /* Texto em maiúsculas */
+  letter-spacing: 2.5px; /* Espaçamento entre letras */
+  font-weight: 500; /* Peso da fonte */
+  color: #fff; /* Cor do texto */
+  background-color: #0077b6; /* Cor de fundo */
+  border: none; /* Sem borda */
+  border-radius: 45px; /* Bordas arredondadas */
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Sombra */
+  transition: all 0.3s ease 0s; /* Transição suave para efeitos */
+  cursor: pointer; /* Cursor em forma de mão */
+  outline: none; /* Remove a borda azul ao clicar */
 }
 
+/* Efeito ao passar o mouse */
 #start-btn:hover {
-    transform: scale(1.05);
+  background-color: #0096c7; /* Cor de fundo mais clara */
+  box-shadow: 0px 15px 20px rgba(0, 150, 199, 0.4); /* Sombra mais forte */
+  color: #fff;
+  transform: translateY(-7px); /* Move o botão 7px para cima */
 }
 
-/* Estilos para a mensagem de objetivo */
+/* Efeito ao clicar */
+#start-btn:active {
+  transform: translateY(-1px); /* Move o botão levemente para baixo (simula clique) */
+}
+
+
+/* --- TELAS DE MENSAGEM (Pop-ups) --- */
 #level-objective {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
-    z-index: 20;
+    position: absolute; /* Posição absoluta */
+    top: 50%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajuste fino para centralização  */
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro semitransparente */
+    padding: 30px; /* Preenchimento interno */
+    border-radius: 15px; /* Bordas arredondadas */
+    text-align: center; /* Texto centralizado */
+    z-index: 20; /* Fica na frente de tudo */
     color: white;
-    border: 2px solid #2a9d8f;
+    border: 2px solid #2a9d8f; /* Borda colorida */
 }
 
 #level-objective h2 {
-    font-size: 2.5em;
+    font-size: 2.2em;
     margin-bottom: 10px;
 }
 
@@ -96,30 +106,140 @@ canvas {
     font-size: 1.2em;
 }
 
-/* Controlos de Toque */
-#touch-controls {
+/* Estilo do pop-up de conscientização */
+#awareness-message {
     position: absolute;
-    bottom: 15px;
-    width: 100%;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centralização */
+    background-color: rgba(0, 20, 40, 0.9); /* Fundo azulado semitransparente */
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    z-index: 20; /* Fica na frente de tudo */
+    color: white;
+    border: 2px solid #90e0ef; /* Borda azul clara */
+    width: 80%; /* Ocupa 80% da largura da tela */
+    max-width: 500px; /* Mas no máximo 500px */
+}
+
+#awareness-message h2 {
+    font-size: 2em;
+    margin-bottom: 15px;
+    color: #48cae4;
+}
+
+#awareness-message p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    line-height: 1.5; /* Espaçamento entre linhas */
+    text-align: center; /* Texto centralizado */
+}
+
+#awareness-message button {
+    font-size: 1.2em;
+    padding: 10px 30px;
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 10px;
+    color: white;
+    background-color: #0096c7;
+}
+
+/* --- CONTROLES DE TOQUE ATUALIZADOS --- */
+#touch-controls {
+    position: absolute; /* Posição absoluta */
+    bottom: 15px; /* Fica na parte de baixo da tela */
+    width: 100%; /* Largura total */
+    padding: 0 20px; /* Espaçamento nas laterais */
+    display: flex; /* Habilita flexbox */
+    justify-content: space-between; /* Coloca um grupo na esquerda e outro na direita */
+    align-items: center; /* Alinha verticalmente */
+    z-index: 5; /* Fica na frente do canvas */
 }
 
 .movement-group {
-    display: flex;
-    gap: 20px;
+    display: flex; /* Agrupa os botões de movimento */
+    gap: 10px; /* Espaço entre os botões de movimento */
 }
 
-#touch-controls button {
-    width: 80px;
-    height: 80px;
-    font-size: 2.5em;
-    border-radius: 50%;
-    border: 2px solid white;
-    background-color: rgba(255, 255, 255, 0.25);
-    color: white;
-    -webkit-tap-highlight-color: transparent;
+/* Estilização para o efeito 3D dos botões de toque */
+.button-3d {
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+  border-width: 0;
+  padding: 0 8px;
+  min-width: 4.5em; /* Tamanho mínimo */
+  min-height: 4.5em;
+  box-sizing: border-box;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  margin: 0 5px;
+  border-radius: 20px;
+}
+
+/* Parte de cima do botão (o ícone) */
+.button-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2; /* Fica na frente das outras partes do botão */
+  padding: 8px 16px;
+  transform: translateY(0);
+  color: #fff;
+  background-image: linear-gradient(145deg, #6a11cb, #2575fc); /* Gradiente roxo/azul */
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  transition: transform 0.2s, border-radius 0.2s;
+  font-size: 2em; /* Tamanho do ícone */
+}
+
+/* Efeito de clique no botão 3D */
+.button-3d:active .button-top {
+  border-radius: 10px 10px 8px 8px / 8px; /* Muda a borda para parecer pressionado */
+  transform: translateY(2px); /* Move o topo para baixo */
+  background-image: linear-gradient(145deg, #2575fc, #6a11cb); /* Inverte o gradiente */
+}
+
+/* Parte de "baixo" do botão (a sombra/profundidade) */
+.button-bottom {
+  position: absolute;
+  z-index: 1; /* Fica atrás do topo */
+  bottom: 4px;
+  left: 4px;
+  border-radius: 20px;
+  padding-top: 6px;
+  width: calc(100% - 8px);
+  height: calc(100% - 10px);
+  background-image: linear-gradient(145deg, #2575fc, #6a11cb);
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
+  transition: border-radius 0.2s, padding-top 0.2s;
+}
+
+/* Base do botão (fundo) */
+.button-base {
+  position: absolute;
+  z-index: 0; /* Fica atrás de tudo */
+  top: 4px;
+  left: 0;
+  border-radius: 20px;
+  width: 100%;
+  height: calc(100% - 4px);
+  background-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 2px 2px rgba(0, 0, 0, 0.25);
+  transition: border-radius 0.2s, padding-top 0.2s;
+}
+
+/* Efeitos de clique nas partes de baixo */
+.button-3d:active .button-bottom {
+  border-radius: 10px 10px 8px 8px / 8px;
+  padding-top: 0;
+}
+
+.button-3d:active .button-base {
+  border-radius: 10px 10px 8px 8px / 8px;
 }
